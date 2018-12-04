@@ -1,0 +1,17 @@
+<h1>Texto simple</h1>
+
+<%= Post.only_published.each do |post| %>
+<table>
+  <tr><%= post.title %></tr>
+  <tr><%= post.content %></tr>
+</table>
+<% end %>
+
+# posts mas populares
+
+<%= Post.popular.each do |post| %>
+<table>
+  <tr><%= post.title %></tr>
+  <tr><%= post.content %></tr>
+</table>
+<% end %>
