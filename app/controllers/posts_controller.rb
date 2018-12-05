@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       @posts = Post.all.order(created_at: :desc)
                    .paginate(page: params[:page], per_page: 2)
 
-      #@last_post = Post.last
+      @last_post = Post.last
       # last posts category "Shoes"
       @shoes_category = Category.find_by(name: "Shoes")
       @shoes_last_post = @shoes_category.posts.last
