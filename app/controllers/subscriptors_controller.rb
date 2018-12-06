@@ -10,6 +10,9 @@ class SubscriptorsController < ApplicationController
     @subscriptor = Subscriptor.new(subscriptor_params)
 
     if @subscriptor.save
+      # send subscriptor mail
+      UserNotifierMailer.send_subscribe_email(@subscriptor).deliver_now
+
       redirect_to posts_path, notice: "Se suscribió exitosamente"
     else
       flash[:alert] = "Hubo un error, favor suscribirse de nuevo"
