@@ -8,6 +8,14 @@ class UserNotifierMailer < ApplicationMailer
         mail(to: @subscriptor.email, subject: @subject)
     end
 
+    def new_post_notifying_user(email, title, id)
+        @email = email 
+        @title = title 
+        @id = id 
+        @url = "http://localhost:3000/posts/#{@id}"
+        mail(to: @email, subject: "#{@title} - New blog on Amazon-Clone")
+    end
+
     
 end
 
