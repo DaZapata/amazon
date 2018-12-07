@@ -11,6 +11,9 @@ end
 
 resources :subscriptors, only: [:new, :create]
 
+#admin routes
+get 'admin', to: 'admin#index'
+
 
 #home routes
 # get '/home/index', to: 'home#index', as: 'jeronimo' # as: alias
@@ -24,10 +27,6 @@ resources :subscriptors, only: [:new, :create]
 # get 'blog/show'
 # get 'blog/edit'
 
-#admin routes
-# get 'admin/index'
-# get 'admin/show'
-#
 # # devise
 # devise_for :users
 
