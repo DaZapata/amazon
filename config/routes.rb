@@ -7,12 +7,18 @@ root 'home#index' #controlador home solo un root por proyecto
 
 resources :posts do
   resources :comments
+  member do 
+    patch :publish
+  end 
 end
 
 resources :subscriptors, only: [:new, :create]
 
 #admin routes
 get 'admin', to: 'admin#index'
+get 'admin/products', to: 'admin#products'
+
+resources :products, only: [:new, :create]
 
 
 #home routes

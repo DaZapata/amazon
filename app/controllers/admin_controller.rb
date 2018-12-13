@@ -2,7 +2,6 @@ class AdminController < ApplicationController
 before_action :authenticate_user!
 before_action :is_admin?
 
-layout "admin" 
 
   def index
     @users = User.all.order(created_at: :desc)
@@ -10,6 +9,10 @@ layout "admin"
     @comments = Comment.all.count
     @subscriptors = Subscriptor.all.order(created_at: :desc)
   end
+
+  def products
+    @products = Product.all.order(created_at: :desc)
+  end 
 
 
   private
