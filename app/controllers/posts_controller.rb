@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       @posts = Post.where(category_id: @category_id)
                    .order(created_at: :desc)
                    .paginate(page: params[:page], per_page: 2)
-  end
+    end
   end
 
   def show

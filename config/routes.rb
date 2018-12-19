@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'order_items/create'
+  get 'order_items/update'
+  get 'order_items/destroy'
+  get 'carts/show'
 devise_for :users
 
 #index, root or home
@@ -12,13 +16,16 @@ resources :posts do
   end 
 end
 
-resources :subscriptors, only: [:new, :create]
+resources :subscriptors
 
 #admin routes
 get 'admin', to: 'admin#index'
 get 'admin/products', to: 'admin#products'
 
-resources :products, only: [:new, :create]
+resources :products, only: [:index, :new, :create]
+resource :cart, only: [:show]
+resources :order_items, only: [:create, :update, :destroy]
+
 
 
 #home routes
