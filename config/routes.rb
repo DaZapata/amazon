@@ -22,7 +22,7 @@ resources :subscriptors
 get 'admin', to: 'admin#index'
 get 'admin/products', to: 'admin#products'
 
-resources :products, only: [:index, :new, :create]
+resources :products, only: [:index, :new, :create, :show]
 resource :cart, only: [:show]
 resources :order_items, only: [:create, :update, :destroy]
 

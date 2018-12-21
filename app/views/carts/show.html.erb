@@ -1,71 +1,67 @@
-
 <section class="jumbotron text-center">
-    <div claa="container">
-        <h1 class="jumbotron-heading"> E-COMMERCE CART</h1>
-    </div>
+	<div class="container">
+		<h1 class="jumbotron-heading">E-COMMERCE CART</h1>
+	</div>
 </section>
+
 <div class="container mb-4">
-    <Div class="row">
-        <div class="col-12">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Product</th>
-                            <th scope="col" class="text-right">Price</th>
-                            <th scope="col" class="text-right">Quantity</th>
-                            <th scope="col" class="text-right">Total Price</th>
-                            <th></th>
-                            
-                        </tr>    
-                    </thead>
-                    <tbody>
-                        <% if @order_items.any? %>
-                            <% @order_items.each do |item| %>
+	<div class="row">
+		<div class="col-12">
+			<div class="table-responsive">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">Product</th>
+							<th scope="col" class="text-right">Price</th>
+							<th scope="col" class="text-right">Quantity</th>
+							<th scope="col" class="text-right">Total Price</th>
+							<th></th>
+						</tr>
+					</thead>
 
-                            <tr>
-                                <td><img src="http://dummyimage.com/50x50/55595c/fff" alt="" ></td>
-                                <td class="text-right"><%= item.product.name %></td>
-                                <td class="text-right"><%= number_to_currency(item.product.price) %></td>
-                                <td class="text-right"><%= item.quantity %></td>
-                                <td class="text-right"><%= number_to_currency(item.product.price * item.quantity) %></td>
-                                <td class="text-right">
-                                    <%= link_to order_item_path(item), :data => {confirm: "Are you sure?", method: :delete}, class: "btn btn-sm btn-danger" do %>
-                                Delete
-                                <% end %>
-                                </td>
-                            </tr>
-                            <% end %>
+					<tbody>
+						<% if @order_items.any? %>
+							<% @order_items.each do |item| %>
+								<tr>
+									<td><img src="https://dummyimage.com/50x50/55595c/fff" alt=""></td>
+									<td class="text-right"><%= item.product.name %></td>
+									<td class="text-right"><%= number_to_currency(item.product.price) %></td>
+									<td class="text-right"><%= item.quantity %></td>
+									<td class="text-right"><%= number_to_currency(item.product.price * item.quantity) %> </td>
+									<td class="text-right">
+										<%= link_to order_item_path(item), :data => {confirm: "You sure?", method: :delete}, class: "btn btn-sm btn-danger" do %>
+										Delete
+										<% end %>
+									</td>
+								</tr>
+							<% end %>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>Shipping</td>
+								<td class="text-right">$0</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>Total</td>
+								<td class="text-right"><strong><%= number_to_currency(current_order.total) %></td></strong>
+							</tr>
+						<% else %>
+							<p>Your cart is empty</p>
+						<% end %>
+					</tbody>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Shipping</td>
-                                <td class="text-right">$0</td>
-                            </tr>
-                             <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Total</td>
-                                <td class="text-right"><strong><%= number_to_currency(current_order.total) %></td></strong>
-                            </tr>
-                           
-                        <% else %>
-                            <p>You cart is empty</p>
-                        <% end %>
-                    </tbody>
-            </div>
-        
-        
-        </div>
-    
-    </Div>
 
+				</table>
+				<%= link_to "Checkout", root_path, class: "btn btn-success btn-lg" %>
+			</div>
+		</div>
+	</div>
 </div>
-
-
 
